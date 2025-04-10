@@ -1,13 +1,15 @@
-/*CREATE SCHEMA TASK3;*/
+/*HELLO..IAM PRANEETHACSK*/
+/*CREATING SCHEMA*/
+CREATE SCHEMA TASK3;
 USE task3;
-/*CREATE TABLE orders_summary (
+CREATE TABLE orders_summary (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(255),
     customer_name VARCHAR(255),
     price DECIMAL(10, 2),
     quantity INT,
     delivery_status VARCHAR(100)
-);*/
+);
 /*INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
 VALUES 
 ('iPhone 14', 'Alice Johnson', 899.99, 1, 'Delivered'),
@@ -131,7 +133,7 @@ WHERE price > (
     SELECT AVG(price) FROM orders_summary
 );*/
 /*sub query-2 Customers With More Than 1 Order*/
--- ✅ Subquery with GROUP BY
+/* Subquery with GROUP BY*/
 /*SELECT customer_name
 FROM orders_summary
 GROUP BY customer_name
