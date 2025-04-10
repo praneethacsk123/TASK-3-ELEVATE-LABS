@@ -1,7 +1,12 @@
 /*HELLO..IAM PRANEETHACSK*/
+
+
 /*CREATING SCHEMA*/
 CREATE SCHEMA TASK3;
 USE task3;
+
+
+/*CREATING TABLE*/
 CREATE TABLE orders_summary (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     product_name VARCHAR(255),
@@ -10,14 +15,18 @@ CREATE TABLE orders_summary (
     quantity INT,
     delivery_status VARCHAR(100)
 );
-/*INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
+
+
+/*INSERTING VALUES INTO TABLE*/
+
+INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
 VALUES 
 ('iPhone 14', 'Alice Johnson', 899.99, 1, 'Delivered'),
 ('Samsung Galaxy S22', 'Bob Smith', 799.00, 2, 'Shipped'),
 ('Dell XPS 13', 'Charlie Lee', 1199.50, 1, 'Pending'),
 ('Sony Headphones', 'Dana White', 149.99, 3, 'Delivered'),
-('Apple Watch SE', 'Eva Green', 279.00, 1, 'Cancelled');*/
-/*INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
+('Apple Watch SE', 'Eva Green', 279.00, 1, 'Cancelled');
+INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
 VALUES 
 ('MacBook Air M2', 'Frank Wilson', 1249.99, 1, 'Delivered'),
 ('Logitech Mouse', 'Grace Kim', 29.99, 2, 'Shipped'),
@@ -28,8 +37,8 @@ VALUES
 ('iPad Pro', 'Leo Patel', 1099.00, 1, 'Delivered'),
 ('Amazon Echo Dot', 'Mona Das', 49.99, 3, 'Delivered'),
 ('Samsung Monitor', 'Nina Hill', 179.99, 2, 'Shipped'),
-('Canon DSLR', 'Oscar Reed', 649.00, 1, 'Pending');*/
-/*INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
+('Canon DSLR', 'Oscar Reed', 649.00, 1, 'Pending');
+INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
 VALUES 
 ('Asus ROG Laptop', 'Priya Shah', 1599.00, 1, 'Delivered'),
 ('OnePlus 11', 'Ravi Mehta', 649.99, 2, 'Shipped'),
@@ -40,8 +49,8 @@ VALUES
 ('HP Laser Printer', 'Wendy Zhou', 229.00, 1, 'Shipped'),
 ('Microsoft Surface Pro 9', 'Xavier Bell', 1199.99, 1, 'Delivered'),
 ('Anker Power Bank', 'Yara Khan', 59.99, 2, 'Delivered'),
-('LG Smart TV 55"', 'Zaid Malik', 749.00, 1, 'Pending');*/
-/*INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
+('LG Smart TV 55"', 'Zaid Malik', 749.00, 1, 'Pending');
+INSERT INTO orders_summary (product_name, customer_name, price, quantity, delivery_status)
 VALUES
 ('Xiaomi Redmi Note 12', 'Aditya Rao', 249.99, 1, 'Delivered'),
 ('Lenovo ThinkPad X1', 'Bhavna Nair', 1399.00, 1, 'Shipped'),
@@ -74,70 +83,96 @@ VALUES
 ('Amazfit Smartwatch', 'Abdul Rahman', 89.99, 1, 'Delivered'),
 ('Canon Lens 50mm', 'Bhavya Singh', 349.99, 1, 'Delivered'),
 ('Logitech C920 Webcam', 'Chitra Kaur', 89.99, 1, 'Shipped'),
-('MSI Gaming Laptop', 'Danish Tyagi', 1699.00, 1, 'Delivered');*/
-/*SELECT*/
-/*SELECT * FROM orders_summary;*/
-/*WHERE*/
-/*SELECT * 
+('MSI Gaming Laptop', 'Danish Tyagi', 1699.00, 1, 'Delivered');
+
+
+/*SELECT UTILIZATION*/
+SELECT * FROM orders_summary;
+
+
+/*WHERE-UTILIZATION*/
+SELECT * 
 FROM orders_summary
-WHERE delivery_status = 'Delivered';*/
-/*ORDERBY*/
+WHERE delivery_status = 'Delivered';
+
+
+/*ORDERBY-UTILIZATION*/
 SELECT * 
 FROM orders_summary
 ORDER BY price DESC;
-/* Total Quantity of All Products Sold*/
-/*SELECT SUM(quantity) AS total_quantity_sold
-FROM orders_summary;*/
+
 /*GROUP BY-Number of Orders per Delivery Status*/
-/*SELECT delivery_status, COUNT(*) AS number_of_orders
+SELECT delivery_status, COUNT(*) AS number_of_orders
 FROM orders_summary
-GROUP BY delivery_status;*/
-/* Average Price of Delivered Orders*/
-/*SELECT AVG(price) AS avg_price_delivered
+GROUP BY delivery_status;
+/* USING AGGREGATE SUM*/
+SELECT SUM(quantity) AS total_quantity_sold
+FROM orders_summary;
+
+
+
+/* USING AVG*/
+SELECT AVG(price) AS avg_price_delivered
 FROM orders_summary
-WHERE delivery_status = 'Delivered';*/
-/*CREATING SECOND TABLE*/
-/*CREATE TABLE delivery_partners (
+WHERE delivery_status = 'Delivered';
+
+
+/*CREATING SECOND TABLE FOR JOIN*/
+CREATE TABLE delivery_partners (
     delivery_status VARCHAR(100),
     partner_name VARCHAR(100)
-);*/
-/*INSERT*/
-/*INSERT INTO delivery_partners (delivery_status, partner_name)
+);
+
+
+/*INSERT SECOND TABLE DETAILS*/
+INSERT INTO delivery_partners (delivery_status, partner_name)
 VALUES
 ('Delivered', 'BlueDart'),
 ('Shipped', 'Delhivery'),
-('Pending', 'Ecom Express');*/
-/*SHOWING*/
-/*SELECT * FROM delivery_partners;*/
-/*joins inner*/
+('Pending', 'Ecom Express');
+
+
+/*SHOWING SECOND TABLE DETAILS*/
+SELECT * FROM delivery_partners;
+
+
 /*INNER JOIN: only matching records from both tables*/
-/*SELECT o.order_id, o.customer_name, o.delivery_status, d.partner_name
+SELECT o.order_id, o.customer_name, o.delivery_status, d.partner_name
 FROM orders_summary o
 INNER JOIN delivery_partners d
-ON o.delivery_status = d.delivery_status;*/
+ON o.delivery_status = d.delivery_status;
+
+
 /*leftjoin*/
-/*SELECT o.order_id, o.customer_name, o.delivery_status, d.partner_name
+SELECT o.order_id, o.customer_name, o.delivery_status, d.partner_name
 FROM orders_summary o
 LEFT JOIN delivery_partners d
-ON o.delivery_status = d.delivery_status;*/
+ON o.delivery_status = d.delivery_status;
+
+
 /*rightjoin*/
-/*SELECT o.order_id, o.customer_name, o.delivery_status, d.partner_name
+SELECT o.order_id, o.customer_name, o.delivery_status, d.partner_name
 FROM orders_summary o
 RIGHT JOIN delivery_partners d
-ON o.delivery_status = d.delivery_status;*/
+ON o.delivery_status = d.delivery_status;
+
+
 /*sub query-Products With Price Higher Than the Average*/
--- ✅ Subquery in WHERE clause
-/*SELECT * 
+
+SELECT * 
 FROM orders_summary
 WHERE price > (
     SELECT AVG(price) FROM orders_summary
-);*/
+);
+
+
 /*sub query-2 Customers With More Than 1 Order*/
-/* Subquery with GROUP BY*/
-/*SELECT customer_name
+SELECT customer_name
 FROM orders_summary
 GROUP BY customer_name
-HAVING COUNT(*) > 1;*/
+HAVING COUNT(*) > 1;
+
+
 /*VIEW*/
 /*ACREATE VIEW customer_revenue AS
 SELECT 
