@@ -174,17 +174,21 @@ HAVING COUNT(*) > 1;
 
 
 /*VIEW*/
-/*ACREATE VIEW customer_revenue AS
+CREATE VIEW customer_revenue AS
 SELECT 
     customer_name,
     SUM(price * quantity) AS total_revenue
 FROM orders_summary
-GROUP BY customer_name;*/
-/*SELECT * FROM customer_revenue;*/
+GROUP BY customer_name;
+
+
+SELECT * FROM customer_revenue;
+
+
 /*INDEXING*/
-/*CREATE INDEX idx_customer_name ON orders_summary(customer_name);
+CREATE INDEX idx_customer_name ON orders_summary(customer_name);
 CREATE INDEX idx_delivery_status ON orders_summary(delivery_status);
 CREATE INDEX idx_price ON orders_summary(price);
-*/
+
 SELECT * FROM orders_summary
 WHERE delivery_status = 'Delivered';
